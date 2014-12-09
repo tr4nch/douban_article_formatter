@@ -13,4 +13,4 @@ Douban Article Formatter 是一个 Grease Monkey 脚本，能够自动过滤和�
 安装
 ----
 
-需要先安装 Grease Monkey，然后点击 [这里](./raw/master/douban_article_formatter.user.js) 安装。
+需要先安装 Grease Monkey，然后点击 [这里](https://github.com/tranch-xiao/douban_article_formatter/raw/master/douban_article_formatter.user.js) 安装。
