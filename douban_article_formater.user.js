@@ -5,7 +5,7 @@
 // @include http://movie.douban.com/review/*
 // @include http://www.douban.com/note/*
 // @include http://book.douban.com/review/*
-// @version 1.1.0
+// @version 1.1.1
 // @author tranch
 // ==/UserScript==
 
@@ -20,11 +20,23 @@
 
     function main($) {
         var article, article_container;
-        article_container = $('div[property="v:description"]');
+        switch (location.host.split('.')[0]) {
+            case 'movie':
+                article_container = $('div[property="v:description"]');
+                break;
+            case 'book':
+                article_container = $('span[property="v:description"]');
+                break;
+            case 'www':
+                article_container = $('div#link-report.note');
+                break;
+            default:
+                return;
+        }
         article = article_container.html().replace(/(&nbsp;|\s|\n){2,}/g, '');
         article = '<p>' + article.replace(/(<br>(\s|(&nbsp;)*)+)+/g, '</p><p>') + '</p>';
         article_container.addClass('article_description').html(article);
-        $('head').append($('<style>', {type: 'text/css'}).html('.article_description p { text-indent: 2em !important; text-align: justify;}'));
+        $('head').append($('<style>', {type: 'text/css'}).html('.article_description p { text-indent: 2em !important; text-align: justify; }'));
     }
 
     GM_wait();
