@@ -5,6 +5,7 @@
 // @include http://movie.douban.com/review/*
 // @include http://www.douban.com/note/*
 // @include http://book.douban.com/review/*
+// @include http://music.douban.com/review/*
 // @version 1.1.1
 // @author tranch
 // ==/UserScript==
@@ -25,6 +26,7 @@
                 article_container = $('div[property="v:description"]');
                 break;
             case 'book':
+            case 'music':
                 article_container = $('span[property="v:description"]');
                 break;
             case 'www':
