@@ -19,7 +19,7 @@
     }
 
     function main($) {
-        var article;
+        var article, article_container;
         article_container = $('div[property="v:description"]');
         article = article_container.html().replace(/(&nbsp;|\s|\n){2,}/g, '');
         article = '<p>' + article.replace(/(<br>(\s|(&nbsp;)*)+)+/g, '</p><p>') + '</p>';
