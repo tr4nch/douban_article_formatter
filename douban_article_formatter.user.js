@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name Douban Article Formater
+// @name Douban Article Formatter
 // @namespace DAF
 // @description 豆瓣文章格式化脚本，能够过滤段落中的手动缩进，自动调整段落间距。
 // @include http://movie.douban.com/review/*
