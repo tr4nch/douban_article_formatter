@@ -6,7 +6,7 @@
 // @include /^https?://www.douban.com/note/*/
 // @include /^https?://book.douban.com/review/*/
 // @include /^https?://music.douban.com/review/*/
-// @version 1.1.3
+// @version 1.1.4
 // @author tranch
 // ==/UserScript==
 
@@ -38,7 +38,7 @@
         article = article_container.html().replace(/(&nbsp;|\s|\n){2,}/g, '');
         article = '<p>' + article.replace(/(<br>(\s|(&nbsp;)*)+)+/g, '</p><p>') + '</p>';
         article_container.addClass('article_description').html(article);
-        $('head').append($('<style>', {type: 'text/css'}).html('.article_description p { text-indent: 2em !important; text-align: justify; }'));
+        $('head').append($('<style>', {type: 'text/css'}).html('.article_description p { text-align: justify; }'));
     }
 
     GM_wait();
