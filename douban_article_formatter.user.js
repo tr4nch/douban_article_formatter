@@ -6,7 +6,7 @@
 // @include /^https?://www.douban.com/note/*/
 // @include /^https?://book.douban.com/review/*/
 // @include /^https?://music.douban.com/review/*/
-// @version 1.1.4
+// @version 1.1.5
 // @author tranch
 // ==/UserScript==
 
