@@ -11,35 +11,23 @@
 // ==/UserScript==
 
 (function() {
-    function GM_wait() {
-        if (typeof window.jQuery == 'undefined') {
-            setTimeout(GM_wait, 100);
-        } else {
-            main(jQuery);
-        }
-    }
-
-    function main($) {
-        var article, article_container;
-        switch (location.host.split('.')[0]) {
-            case 'movie':
-                article_container = $('div[property="v:description"]');
-                break;
-            case 'book':
-            case 'music':
-                article_container = $('span[property="v:description"]');
-                break;
-            case 'www':
-                article_container = $('div#link-report.note');
-                break;
-            default:
-                return;
-        }
-        article = article_container.html().replace(/(&nbsp;|\s|\n){2,}/g, '');
-        article = '<p>' + article.replace(/(<br>(\s|(&nbsp;)*)+)+/g, '</p><p>') + '</p>';
-        article_container.addClass('article_description').html(article);
-        $('head').append($('<style>', {type: 'text/css'}).html('.article_description p { text-align: justify; }'));
-    }
-
-    GM_wait();
+  let content, container;
+  switch (location.host.split('.')[0]) {
+    case 'movie':
+      container = document.querySelector('div[property="v:description"]');
+      break;
+    case 'book':
+    case 'music':
+      container = document.querySelector('span[property="v:description"]');
+      break;
+    case 'www':
+      container = document.querySelector('div#link-report.note');
+      break;
+    default:
+      return;
+  }
+  content = container.innerHTML.replace(/(&nbsp;|\s|\n){2,}/g, '');
+  content = '<p>' + content.replace(/(<br>(\s|(&nbsp;)*)+)+/g, '</p><p>') + '</p>';
+  container.className += ' article_description';
+  container.innerHTML = content;
 })();
